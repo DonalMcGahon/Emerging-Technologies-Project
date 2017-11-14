@@ -55,7 +55,7 @@
 
     <main role="main">
 
-   
+   <!-- This form calls the method upload in the python file. -->
    <form id="upload-form" action="{{ url_for('upload') }}" style="margin-top: 50px;" method="POST" enctype="multipart/form-data">
 
       <div class="jumbotron">
@@ -66,7 +66,7 @@
           <form method="POST" enctype="multipart/form-data">
             <label class="custom-file">
               
-              <input type="file" name="file" class="custom-file-input">
+              <input type="file" name="file" class="custom-file-input" accept="image/*" multiple>
               <span class="custom-file-control"></span>
             
             </label>
