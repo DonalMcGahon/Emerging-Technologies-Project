@@ -16,6 +16,7 @@
 
     <!-- Custom styles for this template -->
     <link href="jumbotron.css" rel="stylesheet">
+
   </head>
 
   <body>
@@ -55,56 +56,194 @@
 
     <main role="main">
 
-   <!-- This form calls the method upload in the python file. -->
-   <form id="upload-form" action="{{ url_for('upload') }}" style="margin-top: 50px;" method="POST" enctype="multipart/form-data">
-
       <div class="jumbotron">
         <div class="container">
-          <h1 class="display-3">Upload Digit Image</h1>
+          <h1 class="display-3">Draw Digit Image on Canvas</h1>
           <main role="main" class="container">
-        <div class="starter-template">
-          <form method="POST" enctype="multipart/form-data">
-            <label class="custom-file">
-              
-              <input type="file" name="file" class="custom-file-input" accept="image/*" multiple>
-              <span class="custom-file-control"></span>
-            
-            </label>
-            <div>
-            <button class="btn btn-primary" type="submit">Upload file</button>
-            </div>
-          </form>
-        </div>
         </div>
       </div>
 
-<!-- Hr tag to separate the image loading to the image number-->
-      <hr></hr>
+<!-- Reference: https://stackoverflow.com/questions/2368784/draw-on-html5-canvas-using-a-mouse -->
+    <script type="text/javascript">
 
-      <div class="container">
-        <!-- Example row of columns -->
-        <div class="row">
-          <div class="col-md-4">
-            <h2>Image Number</h2>
-          </div>
+    var button = document.getElementById('save');
+    var res = document.getElementById('result');
 
-        <hr>
+    var canvas, ctx, flag = false,
+        prevX = 0,
+        currX = 0,
+        prevY = 0,
+        currY = 0,
+        dot_flag = false;
 
-      </div> <!-- /container -->
+    var x = "black",
+        y = 2;
+    
+    function init() {
+        canvas = document.getElementById('can');
+        ctx = canvas.getContext("2d");
+        w = canvas.width;
+        h = canvas.height;
+    
+        canvas.addEventListener("mousemove", function (e) {
+            findxy('move', e)
+        }, false);
+        canvas.addEventListener("mousedown", function (e) {
+            findxy('down', e)
+        }, false);
+        canvas.addEventListener("mouseup", function (e) {
+            findxy('up', e)
+        }, false);
+        canvas.addEventListener("mouseout", function (e) {
+            findxy('out', e)
+        }, false);
+    }
+    
+    function color(obj) {
+        switch (obj.id) {
+            case "green":
+                x = "green";
+                break;
+            case "blue":
+                x = "blue";
+                break;
+            case "red":
+                x = "red";
+                break;
+            case "yellow":
+                x = "yellow";
+                break;
+            case "orange":
+                x = "orange";
+                break;
+            case "black":
+                x = "black";
+                break;
+            case "white":
+                x = "white";
+                break;
+        }
+        if (x == "white") y = 14;
+        else y = 2;
+    
+    }
+    
+    function draw() {
+        ctx.beginPath();
+        ctx.moveTo(prevX, prevY);
+        ctx.lineTo(currX, currY);
+        ctx.strokeStyle = x;
+        ctx.lineWidth = y;
+        ctx.stroke();
+        ctx.closePath();
+    }
+    
+    function erase() {
+        var m = confirm("Want to clear");
+        if (m) {
+            ctx.clearRect(0, 0, w, h);
+            document.getElementById("canvasimg").style.display = "none";
+        }
+    }
+    
+    /*function save() {
+        document.getElementById("canvasimg").style.border = "2px solid";
+        var dataURL = canvas.toDataURL();
+        document.getElementById("canvasimg").src = dataURL;
+        document.getElementById("canvasimg").style.display = "inline";
 
-      <head>
-        <body>
-          <img src= " {{url_for('send_image', filename=image_name)}}" ALIGN="left"  HEIGHT="500" WIDTH="500">
-        </body>
-      </head>
+        //
+        var img = toArray(); // getting data from canvas
+        var xhttp = new XMLHttpRequest(); // init ajax request
+        xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) { // if response is ok sets response text to result label
+        result.innerHTML = this.responseText;
+        }
+        };
+        xhttp.open("POST", "/digit", true); // setting url and method to call
+        xhttp.setRequestHeader("Content-type", "application/json"); // specifying content type as json to make deserialization easier
+        xhttp.send(img);
 
-    </main>
+    }*/
+
+    // button click function
+    function save() {
+    document.getElementById("canvasimg").style.border = "2px solid";
+    var dataURL = canvas.toDataURL();
+    document.getElementById("canvasimg").src = dataURL;
+    document.getElementById("canvasimg").style.display = "inline";
+
+    var img = toArray(); // getting data from canvas
+    var xhttp = new XMLHttpRequest(); // init ajax request
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) { // if response is ok sets response text to result label
+    result.innerHTML = this.responseText;
+    }
+    };
+    xhttp.open("POST", "/digit", true); // setting url and method to call
+    xhttp.setRequestHeader("Content-type", "application/json"); // specifying content type as json to make deserialization easier
+    xhttp.send(img); // sending request with image data in the body
+    };
+    
+    function findxy(res, e) {
+        if (res == 'down') {
+            prevX = currX;
+            prevY = currY;
+            currX = e.clientX - canvas.offsetLeft;
+            currY = e.clientY - canvas.offsetTop;
+    
+            flag = true;
+            dot_flag = true;
+            if (dot_flag) {
+                ctx.beginPath();
+                ctx.fillStyle = x;
+                ctx.fillRect(currX, currY, 2, 2);
+                ctx.closePath();
+                dot_flag = false;
+            }
+        }
+        if (res == 'up' || res == "out") {
+            flag = false;
+        }
+        if (res == 'move') {
+            if (flag) {
+                prevX = currX;
+                prevY = currY;
+                currX = e.clientX - canvas.offsetLeft;
+                currY = e.clientY - canvas.offsetTop;
+                draw();
+            }
+        }
+    }
+    </script>
+    <body onload="init()">
+        <canvas id="can" width="300" height="300" style="position:absolute;top:30%;left:10%;border:2px solid;"></canvas>
+        <div style="position:absolute;top:28%;left:43%;">Choose Color</div>
+        <div style="position:absolute;top:31%;left:45%;width:10px;height:10px;background:green;" id="green" onclick="color(this)"></div>
+        <div style="position:absolute;top:31%;left:46%;width:10px;height:10px;background:blue;" id="blue" onclick="color(this)"></div>
+        <div style="position:absolute;top:31%;left:47%;width:10px;height:10px;background:red;" id="red" onclick="color(this)"></div>
+        <div style="position:absolute;top:33%;left:45%;width:10px;height:10px;background:yellow;" id="yellow" onclick="color(this)"></div>
+        <div style="position:absolute;top:33%;left:46%;width:10px;height:10px;background:orange;" id="orange" onclick="color(this)"></div>
+        <div style="position:absolute;top:33%;left:47%;width:10px;height:10px;background:black;" id="black" onclick="color(this)"></div>
+        <div style="position:absolute;top:36%;left:43%;">Eraser</div>
+        <div style="position:absolute;top:39%;left:45%;width:15px;height:15px;background:white;border:2px solid;" id="white" onclick="color(this)"></div>
+        <img id="canvasimg" style="position:absolute;top:30%;left:52%;" style="display:none;">
+        <input type="button" value="save" id="button" size="30" onclick="save()" style="position:absolute;top:72%;left:10%;">
+        <input type="button" value="clear" id="clr" size="23" onclick="erase()" style="position:absolute;top:72%;left:15%;">
+    </body>
+
+<div>
+    <h2>Result: <span id="result"></span> </h2>
+</div>
+      
 
     
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+-->
+    
   </body>
 </html>
