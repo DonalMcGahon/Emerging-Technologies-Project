@@ -1,12 +1,6 @@
 <!doctype html>
 <html lang="en">
   <head>
-      <!-- CSS -->
-      <style>
-          div12 {
-	            margin: 500px;
-            }
-      </style>
     <title>Digit Image Reader</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -60,20 +54,20 @@
     </nav>
 
     <main role="main">
+    
 
-        <div class="centered" style="position:absolute; left:500px; top:200px;" >
-        <div class="centered">
-			<canvas id="canvas" width="280" height="280" style="border: thin solid black"></canvas>
-		</div>
+        <div style="position:absolute; top:20px;">
+            <div class="centered ">
+                <canvas id="canvas" width="280" height="280" style="border: thin solid black"></canvas>
+            </div>
+            <div class="centered">
+                <input type="button" class="myButton" value="Predict">
+                <input type="button" id="clearButton" value="Clear">
 
-		<div class="centered">
-			<input type="button" class="myButton" value="Predict" style="">
-			<input type="button" id="clearButton" value="Clear Canvas" style="">
-		</div>
-
-		<div class="centered">
-			<h1 id="result"></h1>
-		</div>
+                <div class="centered">
+                    <h1 id="result"></h1>
+                </div>
+            </div>
         </div>
 
     
