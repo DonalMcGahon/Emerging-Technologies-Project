@@ -29,17 +29,17 @@ def predict():
     x = x.reshape(1,28,28,1)
 
     # load model to predict number
-    model = keras.models.load_model("mnist_model.h5")
+    model = keras.models.load_model("trainedmodel/mnist_model.h5")
     out = model.predict(x)
     print(out)
-    print(np.argmax(out, axis=1))
+    #print(np.argmax(out, axis=1))
     response = np.array_str(np.argmax(out, axis=1))
     return response 
 
 def parseImage(imgData):
-    # parse canvas bytes and save as output.png
+    # parse canvas bytes and save as image.png
     imgstr = re.search(b'base64,(.*)', imgData).group(1)
-    with open('output.png','wb') as output:
+    with open('image.png','wb') as output:
         output.write(base64.decodebytes(imgstr))
 
 if __name__ == '__main__':

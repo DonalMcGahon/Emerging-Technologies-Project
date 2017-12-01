@@ -1,6 +1,9 @@
-<!doctype html>
-<html lang="en">
-  <head>
+<!-- Bootstrap adapted from - https://v4-alpha.getbootstrap.com/examples/starter-template/ -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
     <title>Digit Image Reader</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -54,9 +57,9 @@
     </nav>
 
     <main role="main">
-    
 
-        <div style="position:absolute; top:20px;">
+<body>
+    <div style="position:absolute; top:20px;">
             <div class="centered ">
                 <canvas id="canvas" width="280" height="280" style="border: thin solid black"></canvas>
             </div>
@@ -70,13 +73,26 @@
             </div>
         </div>
 
-    
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+      <!-- The following code was taken and adapted from https://github.com/sleepokay/mnist-flask-app/blob/master/templates/index.html-->
+      <script src="{{url_for('static',filename='jquery-3.2.0.min.js')}}"></script>
+	    <script src="{{url_for('static',filename='index.js')}}"></script>
+	    <script type="text/javascript">   
+	   		$(".myButton").click(function(){
+	   			$('#result').text('  Predicting...');
+	   			var $SCRIPT_ROOT = {{request.script_root|tojson|safe}};
+	   			var canvasObj = document.getElementById("canvas");
+	   			var img = canvasObj.toDataURL('image/png');
+	   			$.ajax({
+	   				type: "POST",
+	   				url: $SCRIPT_ROOT + "/predict/",
+	   				data: img,
+	   				success: function(data){
+	   					$('#result').text('Predicted Output: ' + data);
+	   				}
+	   			});
+	   		});
+	   </script>
 
-    
-  </body>
+</body>
+
 </html>
