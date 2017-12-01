@@ -4,6 +4,19 @@
 <html>
 
 <head>
+  <style>
+    div1 {
+       background-color: white;
+       height: 280px;
+       width: 400px;
+       text-shadow: 2px 2px 4px #000000;
+       box-shadow: 10px 10px 5px lightblue;
+    }
+    div2 {
+       height: 220px;
+       width: 400px;
+    }
+  </style>
     <title>Digit Image Reader</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -25,7 +38,7 @@
     <img src="../static/numbers.jpg">
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-      <a class="navbar-brand" href="#">Digit Recogniser</a>
+      <a class="navbar-brand" href="http://127.0.0.1:5000/">Digit Recogniser</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -33,16 +46,16 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Refernce 1</a>
+            <a class="nav-link" href="https://v4-alpha.getbootstrap.com/examples/starter-template/">Bootstrap Reference</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Refernce 2</a>
+            <a class="nav-link" href="https://github.com/fchollet/keras/blob/master/examples/mnist_cnn.py">Data Training Reference</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Refernce 3</a>
+            <a class="nav-link" href="https://github.com/sleepokay/mnist-flask-app/blob/master/app.py">Python File Reference</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Refernce 4</a>
+            <a class="nav-link" href="https://github.com/sleepokay/mnist-flask-app/blob/master/templates/index.html">AJAX Reference</a>
           </li>
         </ul>
       </div>
@@ -51,6 +64,7 @@
     <main role="main">
 
 <body>
+  <!-- The following code creates a canvas that the user can draw their digit. There is 2 buttons Predict and Clear. -->
     <div style="position:absolute; top:55px;">
             <div class="centered ">
                 <canvas id="canvas" width="280" height="280" style="border: thin solid black"></canvas>
@@ -60,9 +74,15 @@
                 <input type="button" class="myButton btn btn-success" value="Predict">
                 <input type="button" id="clearButton" class="btn btn-danger" value="Clear">
 
-                <div class="centered">
-                    <h1 id="result"></h1>
-                </div>
+                <div1 class="right" height="" style="position:absolute; top:0px; left:750px;">
+                  <div>
+                    <h1>Image Recogniser Prediction:</h1>
+                  </div>
+                  </div1>
+                  <div2 class="right" style="position:absolute; top:115px; left:750px;">
+                      <h2 id="result"></h2>
+                  </div2>
+                
             </div>
         </div>
 
@@ -81,7 +101,7 @@
 	   				url: $SCRIPT_ROOT + "/predict/",
 	   				data: img,
 	   				success: function(data){
-	   					$('#result').text('Predicted Output: ' + data);
+	   					$('#result').text('The predicted output for your image is: ' + data);
 	   				}
 	   			});
 	   		});

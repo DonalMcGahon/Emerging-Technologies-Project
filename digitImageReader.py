@@ -8,12 +8,14 @@ import keras.models
 import re
 import base64
 
-
+# Created an instance of the Flask class for my web app
 app = Flask(__name__)
 
+# Home route, bring user to main page which is index.html in the templates folder
 @app.route('/')
 def index():
     return render_template("index.html")
+
 
 @app.route('/predict/', methods=['GET','POST'])
 def predict():
@@ -28,13 +30,15 @@ def predict():
     # reshape image data for use in neural network
     x = x.reshape(1,28,28,1)
 
-    # load model to predict number
-    model = keras.models.load_model("trainedmodel/mnist_model.h5")
+    # This loads model to predict number in the image. I created this by running the trainingData.py file
+    model = keras.models.load_model("trainedmodel/trainedmodel.h5")
+    # out predicts what the number in the image is, the image is (x) which has been reshaped into 28x28px
     out = model.predict(x)
-    print(out)
-    #print(np.argmax(out, axis=1))
+    # response turns the image number to the predicted string value
     response = np.array_str(np.argmax(out, axis=1))
-    return response 
+    # Return the predicted response
+    return response
+
 
 def parseImage(imgData):
     # parse canvas bytes and save as image.png

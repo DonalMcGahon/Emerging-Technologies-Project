@@ -93,4 +93,4 @@ print('Test loss:', score[0])
 print('Test accuracy:', score[1])
 
 # Saves model
-model.save("mnist_model.h5")
+model.save("trainedmodel.h5")
