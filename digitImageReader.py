@@ -21,7 +21,7 @@ def predict():
     parseImage(request.get_data())
 
     # read parsed image back in 8-bit, black and white mode (L)
-    x = imread('output.png', mode='L')
+    x = imread('image.png', mode='L')
     x = np.invert(x)
     x = imresize(x,(28,28))
 
