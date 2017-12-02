@@ -34,8 +34,10 @@ def predict():
     model = keras.models.load_model("trainedmodel/trainedmodel.h5")
     # out predicts what the number in the image is, the image is (x) which has been reshaped into 28x28px
     out = model.predict(x)
+    print(out)
     # response turns the image number to the predicted string value
     response = np.array_str(np.argmax(out, axis=1))
+    print(response)
     # Return the predicted response
     return response
 

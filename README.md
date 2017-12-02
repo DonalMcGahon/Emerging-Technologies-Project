@@ -11,14 +11,24 @@ In this project you will create a web application in Python to recognise digits 
 1. Add a route to your application that accepts requests containing a user input image and responds with the digit.
 1. Connect the HTML page to the route using AJAX.
 
-## How to run application
-1. Download or clone the repository
-1. Run cmd on your machine and navigate to the folders location
-1. Run the application by running the app.py file using the following line -
-``` python app.py ```
-1. The following http link should appear  "Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)" and you should navigate to this link on your browser
+## How I created the application
+
+## How to download and run my application
+
+## Reference Summary
+
+## Machine-Learning
+
+## Tensorflow
+
+## Flask
+
+## Karas
+
+## AJAX
+
+## Conclusion
 
 ## References
 * Flask simple [project](http://flask.pocoo.org/)
 * Flask uploading [files](http://flask.pocoo.org/docs/0.12/patterns/fileuploads/)
-* Github tutorial on [displaying images]()
