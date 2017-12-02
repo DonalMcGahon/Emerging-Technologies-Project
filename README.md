@@ -38,6 +38,23 @@ my index.html allowing the user to draw an image on a canvas and AJAX updating t
 
 ## How to download and run my application
 
+1. Download zip of repository or clone the repository.
+1. Unzip folder or clone in a suitable location for you.
+1. Open your cmd on your machine.
+1. cd to the repository.
+1. Run the following code when you are in the repository `python digitImageReader.py` to run flask app
+1. Open your favourite browser and enter `http://127.0.0.1:5000/`
+
+* If you would like to train the data yourself you can do so by following these instructions:
+1. Download zip of repository or clone the repository.
+1. Unzip folder or clone in a suitable location for you.
+1. Open your cmd on your machine.
+1. cd to the repository.
+1. cd to trainedmodel.
+1. Run the following code when you are in the trainedmodel folder `python trainingData.py`
+Depending on your machine capabilities this may take some time.
+Once trained the trained model file will save in the repository as `trainedmodel.h5` 
+
 ## Reference Summary
 
 ## Machine-Learning
