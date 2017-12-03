@@ -148,3 +148,7 @@ AJAX allows users to:
 Reference [9](https://www.w3schools.com/xml/ajax_intro.asp).
 
 ## Conclusion
+
+I enjoyed all the challenges this project gave me. I learned a lot about machine learning and how it works. I also learned a lot about Tensorflow, Flask, Python and Keras.
+This project made my reseach skills improve as throughout the project I done a great deal of research on all areas of the project.
+I really enjoyed doing the research and I believe it will make me better at doing these types of problems and projects in the fucture.
