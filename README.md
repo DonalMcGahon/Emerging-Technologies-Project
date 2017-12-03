@@ -61,7 +61,7 @@ Once trained the trained model file will save in the repository as `trainedmodel
 
 Flask - [Reference 1](http://flask.pocoo.org/ ) [Reference 2](http://flask.pocoo.org/docs/0.12/patterns/fileuploads/)
 
-Tensorflow - [Reference](https://www.tensorflow.org/) [Reference 2](https://www.tensorflow.org/get_started/mnist/pros)
+Tensorflow - [Reference 1](https://www.tensorflow.org/) [Reference 2](https://www.tensorflow.org/get_started/mnist/pros)
 
 Keras training model - [Reference](https://github.com/fchollet/keras/blob/master/examples/mnist_cnn.py)
 
@@ -74,6 +74,13 @@ Project which helped me - [Reference](https://github.com/sleepokay/mnist-flask-a
 Canvas - [Reference](https://www.w3schools.com/tags/att_canvas_width.asp)
 
 Previous Assignment - [Reference](https://github.com/DonalMcGahon/Tensorflow/blob/master/Tensorflow.ipynb)
+
+## Accuracy & Loss of Model
+
+| Accuracy| Loss           | 
+| ------------- |:-------------:| 
+| 99.06% | 0.029%| 
+|0.9906   | 0.029336262507|
 
 ## Machine-Learning
 
