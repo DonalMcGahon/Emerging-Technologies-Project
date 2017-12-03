@@ -57,6 +57,8 @@ Once trained the trained model file will save in the repository as `trainedmodel
 
 ## References
 
+#### Where all these references were used in the development of my single page web application are explained in the "How I created the application" section of this README.
+
 Flask - [Reference 1](http://flask.pocoo.org/ ) [Reference 2](http://flask.pocoo.org/docs/0.12/patterns/fileuploads/)
 
 Tensorflow - [Reference](https://www.tensorflow.org/) [Reference 2](https://www.tensorflow.org/get_started/mnist/pros)
@@ -65,7 +67,7 @@ Keras training model - [Reference](https://github.com/fchollet/keras/blob/master
 
 AJAX - [Reference]()
 
-Bootstrap - [Reference]([bootstrap example](https://v4-alpha.getbootstrap.com/examples/starter-template/))
+Bootstrap - [Reference](https://v4-alpha.getbootstrap.com/examples/starter-template/)
 
 Project which helped me - [Reference](https://github.com/sleepokay/mnist-flask-app)
 
@@ -84,7 +86,3 @@ Previous Assignment - [Reference](https://github.com/DonalMcGahon/Tensorflow/blo
 ## AJAX
 
 ## Conclusion
-
-## References
-* Flask simple [project](http://flask.pocoo.org/)
-* Flask uploading [files](http://flask.pocoo.org/docs/0.12/patterns/fileuploads/)
