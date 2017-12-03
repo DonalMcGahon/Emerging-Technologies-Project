@@ -69,9 +69,9 @@
 
 <body>
   <!-- The following code creates a canvas that the user can draw their digit. There is 2 buttons Predict and Clear. -->
-    <div style="position:absolute; top:55px;">
+    <div style="position:absolute; top:56px;">
             <div class="centered ">
-                <canvas id="canvas" width="280" height="280" style="border: thin solid black"></canvas>
+                <canvas id="myCanvas" width="280" height="280" style="border: thin solid black"></canvas>
             </div>
             <h4>Draw any single digit in the above space</h4>
             <div class="centered">
@@ -90,25 +90,87 @@
             </div>
         </div>
 
-      <!-- The following code was taken and adapted from https://github.com/sleepokay/mnist-flask-app/blob/master/templates/index.html -->
-      <div style="position:absolute; top:200px;">
+      
+      <div>
       <script src="{{url_for('static',filename='jquery-3.2.0.min.js')}}"></script>
-	    <script src="{{url_for('static',filename='index.js')}}"></script>
-	    <script type="text/javascript">   
+	    <!-- Code Adapted from - https://github.com/sleepokay/mnist-flask-app/tree/master/static -->
+      <!-- The following code is used to allow the user to draw a digit on a canvas -->
+      <script>
+        (function() {
+                var canvas = document.querySelector("#myCanvas");
+                var context = canvas.getContext("2d");
+                canvas.width = 280;
+                canvas.height = 280;
+
+                var Mouse = {x:0, y:0};
+                var lastMouse = {x:0, y:0};
+                context.fillStyle = "white";
+                context.fillRect(0, 0, canvas.width, canvas.height);
+                context.color = "lightblue";
+                context.lineWidth = 7;
+                  context.lineJoin = context.lineCap = 'round';
+                
+                debug();
+
+                canvas.addEventListener("mousemove", function(e) {
+                  lastMouse.x = Mouse.x;
+                  lastMouse.y = Mouse.y;
+
+                  Mouse.x = e.pageX - this.offsetLeft-0;
+                  Mouse.y = e.pageY - this.offsetTop-60;
+                }, false);
+
+                canvas.addEventListener("mousedown", function(e) {
+                  canvas.addEventListener("mousemove", onPaint, false);
+                }, false);
+
+                canvas.addEventListener("mouseup", function() {
+                  canvas.removeEventListener("mousemove", onPaint, false);
+                }, false);
+
+                var onPaint = function() {	
+                  context.lineWidth = context.lineWidth;
+                  context.lineJoin = "round";
+                  context.lineCap = "round";
+                  context.strokeStyle = context.color;
+                
+                  context.beginPath();
+                  context.moveTo(lastMouse.x, lastMouse.y);
+                  context.lineTo(Mouse.x,Mouse.y );
+                  context.closePath();
+                  context.stroke();
+                };
+
+                function debug() {
+                  $("#clearButton").on("click", function() {
+                    context.clearRect( 0, 0, 280, 280 );
+                    context.fillStyle="white";
+                    context.fillRect(0,0,canvas.width,canvas.height);
+                  });
+                }
+              }());
+      </script>
+      <!-- The following code was taken and adapted from https://github.com/sleepokay/mnist-flask-app/blob/master/templates/index.html -->
+	    <script type="text/javascript">
+      // When user clicks the predict button the following text will appear   
 	   		$(".myButton").click(function(){
-	   			$('#result').text('  Predicting...');
+	   			$('#result').text('Analysing your image...');
+           // Sets a global variable to the prefix to the root of the application. Reference (http://flask.pocoo.org/docs/0.12/patterns/jquery/).
 	   			var $SCRIPT_ROOT = {{request.script_root|tojson|safe}};
-	   			var canvasObj = document.getElementById("canvas");
-	   			var img = canvasObj.toDataURL('image/png');
-	   			$.ajax({
-	   				type: "POST",
-	   				url: $SCRIPT_ROOT + "/predict/",
-	   				data: img,
-	   				success: function(data){
-	   					$('#result').text('The predicted output for your image is: ' + data);
-	   				}
-	   			});
-	   		});
+           // Sets canvasObj as myCanvas which is the canvas the user draws their digit to
+	   			var canvasObj = document.getElementById("myCanvas");
+           // Sets img to the saved image the user draws
+	   			var img = canvasObj.toDataURL('static/image/jpg');
+           // AJAX POST method that uses the predict route in digitImageReader.py file. It has a success fuction that changes the result text from 'Analysing your image...' to the number predicted by the application.
+            $.ajax({
+              type: "POST",
+              url: $SCRIPT_ROOT + "/predict/",
+              data: img,
+              success: function(data){
+                $('#result').text('The predicted output for your image is: ' + data);
+              }
+            });
+          });
 	   </script>
       </div>
       

@@ -1,5 +1,4 @@
 # Code Adapted from - https://github.com/sleepokay/mnist-flask-app/blob/master/app.py
-
 # Imports
 from flask import Flask, render_template, request
 from scipy.misc import imsave, imread, imresize
@@ -23,7 +22,7 @@ def predict():
     parseImage(request.get_data())
 
     # read parsed image back in 8-bit, black and white mode (L)
-    x = imread('image.png', mode='L')
+    x = imread('static/image.jpg', mode='L')
     x = np.invert(x)
     x = imresize(x,(28,28))
 
@@ -43,9 +42,9 @@ def predict():
 
 
 def parseImage(imgData):
-    # parse canvas bytes and save as image.png
+    # parse canvas bytes and save as image.jpg
     imgstr = re.search(b'base64,(.*)', imgData).group(1)
-    with open('image.png','wb') as output:
+    with open('static/image.jpg','wb') as output:
         output.write(base64.decodebytes(imgstr))
 
 if __name__ == '__main__':
