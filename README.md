@@ -82,7 +82,11 @@ Previous Assignment - [Reference](https://github.com/DonalMcGahon/Tensorflow/blo
 | 99.06% | 0.029%| 
 |0.9906   | 0.029336262507|
 
-## Machine-Learning
+## Machine-Learning ![machine-learning](https://user-images.githubusercontent.com/14197773/33525295-b44b7cde-d824-11e7-87a2-797b2f445942.png)
+
+Machine learning is a type of artificial intelligence (AI) that allows software applications to become more accurate in predicting outcomes without being explicitly programmed. The basic premise of machine learning is to build algorithms that can receive input data and use statistical analysis to predict an output value within an acceptable range.
+
+Facebook's News Feed, for example, uses machine learning to personalize each member's feed. If a member frequently stops scrolling to read or "like" a particular friend's posts, the News Feed will start to show more of that friend's activity earlier in the feed [1](http://whatis.techtarget.com/definition/machine-learning). 
 
 ## Tensorflow
 
