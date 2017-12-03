@@ -55,7 +55,23 @@ my index.html allowing the user to draw an image on a canvas and AJAX updating t
 Depending on your machine capabilities this may take some time.
 Once trained the trained model file will save in the repository as `trainedmodel.h5` 
 
-## Reference Summary
+## References
+
+Flask - [Reference 1](http://flask.pocoo.org/ ) [Reference 2](http://flask.pocoo.org/docs/0.12/patterns/fileuploads/)
+
+Tensorflow - [Reference](https://www.tensorflow.org/) [Reference 2](https://www.tensorflow.org/get_started/mnist/pros)
+
+Keras training model - [Reference](https://github.com/fchollet/keras/blob/master/examples/mnist_cnn.py)
+
+AJAX - [Reference]()
+
+Bootstrap - [Reference]([bootstrap example](https://v4-alpha.getbootstrap.com/examples/starter-template/))
+
+Project which helped me - [Reference](https://github.com/sleepokay/mnist-flask-app)
+
+Canvas - [Reference](https://www.w3schools.com/tags/att_canvas_width.asp)
+
+Previous Assignment - [Reference](https://github.com/DonalMcGahon/Tensorflow/blob/master/Tensorflow.ipynb)
 
 ## Machine-Learning
 
