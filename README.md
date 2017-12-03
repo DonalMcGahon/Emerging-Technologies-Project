@@ -88,9 +88,15 @@ Machine learning is a type of artificial intelligence (AI) that allows software 
 
 Facebook's News Feed, for example, uses machine learning to personalize each member's feed. If a member frequently stops scrolling to read or "like" a particular friend's posts, the News Feed will start to show more of that friend's activity earlier in the feed [1](http://whatis.techtarget.com/definition/machine-learning). 
 
-## Tensorflow
+## Tensorflow ![tensorflow](https://user-images.githubusercontent.com/14197773/33525374-1862cb72-d826-11e7-9953-5c875985eb19.png)
+
+TensorFlow is an open source software library for numerical computation using data-flow graphs. It was originally developed by the Google Brain Team within Google's Machine Intelligence research organization for machine learning and deep neural networks research, but the system is general enough to be applicable in a wide variety of other domains as well [2](https://opensource.com/article/17/11/intro-tensorflow).
+
+TensorFlow doesn't exactly give every developer the ability to harness machine learning, but it does provide both a Python and C/C++ API to link into a developer’s program [3](https://www.computerworlduk.com/open-source/what-is-tensorflow-how-are-businesses-using-it-3658374/).
 
 ## Flask
+
+
 
 ## Karas
 
