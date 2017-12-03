@@ -96,6 +96,29 @@ TensorFlow doesn't exactly give every developer the ability to harness machine l
 
 ## Flask
 
+![flask](https://user-images.githubusercontent.com/14197773/33525414-fe48ef18-d826-11e7-9485-e37a9a16d44a.png)
+
+Flask is a web framework. This means flask provides you with tools, libraries and technologies that allow you to build a web application.
+This web application can be some web pages, a blog, a wiki or go as big as a web-based calendar application or a commercial website [4](http://pymbook.readthedocs.io/en/latest/flask.html).
+
+#### Simple Flask Web App Setup Example
+
+##### In your python file
+```
+from flask import Flask
+app = Flask(__name__)
+
+@app.route("/")
+def hello():
+    return "Hello World!"
+```
+##### On your cmd
+```
+$ pip install Flask
+$ FLASK_APP=hello.py flask run
+ * Running on http://localhost:5000/
+``` 
+Reference [5](http://flask.pocoo.org/).
 
 
 ## Karas
