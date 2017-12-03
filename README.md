@@ -120,8 +120,17 @@ $ FLASK_APP=hello.py flask run
 ``` 
 Reference [5](http://flask.pocoo.org/).
 
+## Keras ![keras](https://user-images.githubusercontent.com/14197773/33525516-f76faea0-d828-11e7-9734-3a95083b8304.png)
 
-## Karas
+Keras is an open source neural network library written in Python. It is capable of running on top of MXNet, Deeplearning4j, Tensorflow, CNTK or Theano [6](https://en.wikipedia.org/wiki/Keras).
+
+Use Keras if you need a deep learning library that:
+
+* Allows for easy and fast prototyping (through user friendliness, modularity, and extensibility).
+* Supports both convolutional networks and recurrent networks, as well as combinations of the two.
+* Runs seamlessly on CPU and GPU.
+Reference [7](https://keras.io/)
+
 
 ## AJAX
 
