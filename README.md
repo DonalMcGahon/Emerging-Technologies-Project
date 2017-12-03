@@ -129,9 +129,22 @@ Use Keras if you need a deep learning library that:
 * Allows for easy and fast prototyping (through user friendliness, modularity, and extensibility).
 * Supports both convolutional networks and recurrent networks, as well as combinations of the two.
 * Runs seamlessly on CPU and GPU.
-Reference [7](https://keras.io/)
+
+Reference [7](https://keras.io/).
 
 
-## AJAX
+## AJAX (Asynchronous JavaScript And XML) 
+
+![ajax](https://user-images.githubusercontent.com/14197773/33525540-5c24b91c-d829-11e7-9f8e-11717adf9dde.png)
+
+AJAX is a set of Web development techniques using many Web technologies on the client side to create asynchronous Web applications [8](https://en.wikipedia.org/wiki/Ajax_(programming)).
+
+AJAX allows users to:
+
+1. Update a web page without reloading the page
+1. Request data from a server - after the page has loaded
+1. Receive data from a server - after the page has loaded
+1. Send data to a server - in the background
+Reference [9](https://www.w3schools.com/xml/ajax_intro.asp).
 
 ## Conclusion
